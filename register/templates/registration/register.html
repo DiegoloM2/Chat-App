@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Register</title>
+    <meta charset = "UTF-8"/>
+    {% load static %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/register.css' %}"/>
+  </head>
+  <body>
+    <div class = "main">
+      <p class = "sign" align = "center">Register</p>
+      <form method = "POST" class = "form1">
+        {% csrf_token %}
+        {% for field in form %}
+          {{field}}
+          <script>
+            var ele = document.getElementById("{{field.auto_id}}");
+            console.log(ele);
+            ele.placeholder = "{{field.name}}";
+            ele.align = "center";
+            ele.className = "un reg_inp";
+          </script>
+          {% for error in field.errors %}
+            <script>
+            ele.style.marginBottom = "5px";
+            </script>
+            <p style = "color:red;font-style:'Ubuntu', sans-serif; " align = "center">{{error}}</p>
+          {%endfor%}
+
+          {%endfor%}
+        <button type = "submit" class = "submit" align = "center">Register</button>
+        <p>Already have an account? Log in <a href = "/login">here</a>.</p>
+      </form>
+
+    </div>
+  </body>
+</html>

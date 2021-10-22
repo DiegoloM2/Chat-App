@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Mectio|Login </title>
+    <meta charset = "UTF-8"/>
+    {% load static %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/base.css' %}" />
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'css/register.css' %}"/>
+  </head>
+  <body>
+    <div class = "main">
+      <p class = "sign" align = "center">Login</p>
+      <form method = "POST" class = "login-form" id = "f">
+        {{form.as_p}}
+        {% csrf_token %}
+        {% for field in form %}
+          <script>
+            var ele = document.getElementById("{{field.auto_id}}");
+            console.log(ele);
+            ele.placeholder = "{{field.name}}";
+            ele.align = "center";
+            ele.className = "un";
+
+          </script>
+          {% for error in form.errors %}
+            <script>
+            ele.style.marginBottom = "5px";
+            </script>
+            <p style = "color:red;font-style:'Ubuntu', sans-serif; " align = "center"></p>
+          {%endfor%}
+
+          {%endfor%}
+        <button type = "submit" class = "submit-login-details" >Sign in</button>
+        <p>Don't have an account? Create one <a href = "/register">here</a></p>
+        <p>Forgot your password? Set a new one <a href = "#">here</a>.</p>
+      </form>
+
+    </div>
+  </body>
+</html>
+
+

@@ -1,0 +1,10 @@
+body{
+    background:#eee;    
+    font-size:1.7em;
+}
+
+
+
+.btn-show-friend-request-form {
+    cursor:pointer;
+}

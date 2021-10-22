@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Rooms</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href = "{% url 'logout' %}?next={% url 'index'%}">Logout</a></li>
+                <li><a href = "{% url 'friends' %}">Friends</a></li>
+                <li><a href = "{% url 'privateChat' %}">Chat with friends</a></li>
+            
+            {% else %}
+                <li><a href = "{% url 'register' %}">Register</a></li>
+                <li><a href = "{% url 'login' %}?next={% url 'index' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <h1>What chat room would you like to enter?</h1>
+
+    <input id = "room-name-input" type = "text" size = "100"/> <br/>
+    <input id = "room-name-submit" type = "button" value = "Enter"/> 
+
+    <script>
+        document.querySelector("#room-name-input").focus()
+        document.querySelector("#room-name-input").onkeyup = function (e) {
+            if (e.keyCode === 13) { //keyCode = 13 means 'enter' so when the user hits enter a chatroom is entered. 
+                document.querySelector("#room-name-submit").click();
+            }
+        };
+        document.querySelector("#room-name-submit").onclick = function (e) {
+            const roomName = document.querySelector("#room-name-input").value;   
+            window.location.pathname = "chat/" + roomName + "/";
+
+        }
+    </script>
+</body>
+</html>

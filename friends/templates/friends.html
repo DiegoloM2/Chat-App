@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel = "stylesheet" href = "{% static 'css/friends.css' %}" />
+
+    <title>Friends Page</title>
+</head>
+<body>
+    <h1>
+        Your Friends:
+    </h1>
+    {% for friend in friendList %}
+    <div class = "friend-container">
+        <h2>
+            {{friend.username}} 
+            <!-- in the future add a link to his profile in this h2 -->
+        </h2>
+    </div>
+    <hr/>
+    {% endfor %}
+    
+    <button class = "btn-show-friend-request-form" >Add a friend</button>
+    <form method = "POST" class = "friend-request-form" id = "friend-request-form" action = "{% url 'friends' %}" style = "display:none">
+        {% csrf_token %}
+        <h1>Send a Friend Request</h1>
+
+        <input type = "text" placeholder = "Enter username" id = "input-receiver" name = "receiver"/>
+        <input type = "submit" value = "Send Friend Request" id = "btn-send-friend-request" />
+    </form>
+
+    <div class = "active-friend-requests-container">
+        {% if receivedFriendRequests %}
+            <div class = "received-friend-requests-container">
+                <h2>Received Friend Requests:</h2>
+                {% for friendRequest in receivedFriendRequests%}
+                    <div class = "received-friend-request">
+                        <p><h3>{{friendRequest.sender.username}}</h3>: <a href = "{% url 'acceptFriendRequest' friendRequest.id %}" id = "acceptFriendRequest" >Accept</a>|
+                            <a href = "{% url 'declineFriendRequest' friendRequest.id %}" id = "declineFriendRequest">Decline</a></p>
+                        <span>{{friendRequest.timestamp}}</span>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <script>
+                document.getElementById("acceptFriendRequest").onclick = function (e) {
+                    e.preventDefault();
+                    const url = this.href;
+                    fetch(url)
+                }
+
+                document.getElementById("declineFriendRequest").onclick = function (e) {
+                    e.preventDefault();
+                    const url = this.href;
+                    fetch(url)
+                }
+            </script>
+        {% endif %}
+
+        {% if sentFriendRequests %}
+        <div class = "sent-friend-requests-container">
+            <h2>Sent Friend Requests</h2>
+            {% for friendRequest in sentFriendRequests%}
+                <div class = "sent-friend-request">
+                    <p><h3>{{friendRequest.receiver.username}}</h3>: <a href = "{% url 'cancelFriendRequest' friendRequest.id %}"  id = "cancelFriendRequest">Cancel Friend Request</a></p>
+                    <span>{{friendRequest.timestamp}}</span>
+                </div>
+            {% endfor %}
+        </div>
+        <script>
+            document.getElementById("cancelFriendRequest").onclick = function (e) {
+                e.preventDefault();
+                const url = this.href;
+                fetch(url);
+            }
+        </script>
+
+    {% endif %}
+
+    </div>
+
+    
+</body>
+
+<script src = "{% static 'js/friends.js'%}"></script>
+
+</html>

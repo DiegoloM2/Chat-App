@@ -1,0 +1,146 @@
+
+body {
+    color: #8C55AA;
+    font-family: 'Ubuntu', sans-serif;
+    background-color:#242582;
+  }
+  input {
+      margin: 10px;
+  }
+  p {
+    text-align: center;
+  }
+  
+  p label {
+    display:none;
+  }
+  .reg_inp {
+      position:relative;
+      left: 18px;
+      margin-bottom: 30px;
+      margin-top: 0px;
+  }
+  
+  .main {
+     background-color: #FFFFFF;
+    width: 40%;
+    height: 60%;
+     margin: 7em auto;
+     border-radius: 1.5em;
+     box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+  }
+  
+  .sign {
+     padding-top: 40px;
+     color: #8C55AA;
+     font-family: 'Ubuntu', sans-serif;
+     font-weight: bold;
+     font-size: 30px;
+     align:center;
+     text-align:center;
+  }
+  
+  .un {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding:10px 20px;
+  
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-right: 50px;
+  margin-left: 50px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .un:last-child {
+    margin-bottom: 30px;
+  }
+  
+  form.edit-deck-form {
+    padding-top: 40px;
+  }
+  form.edit-deck-form p {
+    align:center;
+    text-align:center;
+  }
+  form.edit-deck-form button {
+    display:block;
+  }
+  
+  .pass {
+  width: 76%;
+  color: rgb(38, 50, 56);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: rgba(136, 126, 126, 0.04);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  margin-bottom: 50px;
+  margin-left: 46px;
+  text-align: center;
+  margin-bottom: 27px;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  
+  
+  .un:focus, .pass:focus {
+     border: 2px solid rgba(0, 0, 0, 0.18) !important;
+  
+  }
+  
+  .submit-login-details {
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9C27B0, #E040FB);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    text-align:center;
+    }
+  
+  .forgot {
+     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+     color: #E1BEE7;
+     padding-top: 15px;
+  }
+  
+  a {
+     text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+     color: #F64C72;
+     text-decoration: none
+  }
+  
+  @media (max-width: 600px) {
+     .main {
+         border-radius: 0px;
+     }
+    }
+
+.login-form {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border: 1px solid black;
+}
